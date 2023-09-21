@@ -83,6 +83,7 @@ CHS=3
 IRIP=$(dig -4 +short myip.opendns.com @resolver1.opendns.com)
 EXIP=0.0.0.0
 IRPORT=23-65535
+IRPORTTT=443
 TOIP=127.0.0.1
 TOPORT=multiport
 
@@ -116,7 +117,7 @@ Description=Reverse TLS Tunnel
 Type=idle
 User=root
 WorkingDirectory=/usr/local/bin/rtt
-ExecStart=/usr/local/bin/rtt/RTT --kharej --iran-ip:$EXIP --iran-port:$IRPORT --toip:$TOIP --toport:$TOPORT --password:$TOPASS --sni:$SNI --terminate:$TERM
+ExecStart=/usr/local/bin/rtt/RTT --kharej --iran-ip:$EXIP --iran-port:$IRPORTTT --toip:$TOIP --toport:$TOPORT --password:$TOPASS --sni:$SNI --terminate:$TERM
 Restart=always
 
 [Install]
@@ -174,4 +175,3 @@ case $CHS in
     *)   echo "Done."; exit 1 ;;
 
 esac
-
